@@ -21,4 +21,17 @@ class NativeUtils {
     }
     return await _channel.invokeMethod('setFullScreen');
   }
+  static Future<bool> checkIsRoot() async {
+    if(!Platform.isAndroid) {
+      return Future.error(null);
+    }
+    return await _channel.invokeMethod('checkIsRoot');
+  }
+
+  static Future<bool> checkLightSensor() async {
+    if(!Platform.isAndroid) {
+      return Future.error(null);
+    }
+    return await _channel.invokeMethod('checkLightSensor');
+  }
 }
