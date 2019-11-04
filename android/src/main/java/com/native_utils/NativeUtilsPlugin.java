@@ -14,6 +14,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import android.util.Log;
+import android.content.Intent;
+import android.provider.Settings;
 
 /** NativeUtilsPlugin */
 public class NativeUtilsPlugin implements MethodCallHandler {
@@ -40,8 +42,14 @@ public class NativeUtilsPlugin implements MethodCallHandler {
       mRegistrar.activity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
       result.success(true);
     } else if(call.method.equals("checkLightSensor")) {
-      result.success(notHasLightSensorManager(registrar.context()));
-    } else if(call.method.equals("checkIsRoot")) {
+      result.success(notHasLightSensorManager(this.mRegistrar.context()));
+    } else if(call.method.equals("getIntent")) {
+
+      final String action = (String) call.arguments;
+
+      getIntent(mRegistrar, action);
+      result.success(true);
+    }else if(call.method.equals("checkIsRoot")) {
       try {
         Boolean a = isRoot();
         result.success(a);
@@ -50,10 +58,16 @@ public class NativeUtilsPlugin implements MethodCallHandler {
         result.success(false);
       }
     }
-      else {
+    else {
       result.notImplemented();
     }
   }
+
+  public void getIntent(Registrar mRegistrar, String action) {
+    Intent intent = new Intent(action);
+    mRegistrar.activity().startActivityForResult(intent,887);
+  }
+
   /**
    * 判断是否存在光传感器来判断是否为模拟器
    * 部分真机也不存在温度和压力传感器。其余传感器模拟器也存在。

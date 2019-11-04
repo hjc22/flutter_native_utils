@@ -34,4 +34,10 @@ class NativeUtils {
     }
     return await _channel.invokeMethod('checkLightSensor');
   }
+  static Future<bool> getIndent(String action) async {
+    if(!Platform.isAndroid) {
+      return Future.error(null);
+    }
+    return await _channel.invokeMethod('getIntent', action);
+  }
 }
