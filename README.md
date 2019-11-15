@@ -4,11 +4,18 @@ A new flutter plugin project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
+## 支持功能
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+### android (java)
+
+设置全屏 
+取消全屏
+Indent
+检测是否root
+检测是否有光传感器 用来检测安卓模拟器
+
+
+### IOS (swift)
+
+应用内打开 appStore 对应软件页
+直接跳到app store 对应软件页
