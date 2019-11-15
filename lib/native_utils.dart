@@ -50,7 +50,7 @@ class NativeUtils {
     }
     try {
       _isInsideOpenAppStore = true;
-      bool result = await _channel.invokeMethod('insideOpenAppStore', appId);
+      bool result = await _channel.invokeMethod('insideOpenAppStore', appId).timeout(const Duration(seconds: 6));
       return result;
     }
     catch(err) {
