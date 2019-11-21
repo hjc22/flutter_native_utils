@@ -21,6 +21,8 @@ rootProject.allprojects {
 
 apply plugin: 'com.android.library'
 
+//apply plugin: 'walle'
+
 android {
     compileSdkVersion 28
 
@@ -31,4 +33,8 @@ android {
     lintOptions {
         disable 'InvalidPackage'
     }
+}
+
+dependencies {
+    implementation 'com.meituan.android.walle:library:1.1.6'
 }

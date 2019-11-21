@@ -19,30 +19,52 @@ class NativeUtils {
 
   static Future<bool> setFullScreen() async {
     if(!Platform.isAndroid) {
-      return Future.error(null);
+      return null;
     }
     return await _channel.invokeMethod('setFullScreen');
   }
+
+  static Future<Map> getWalleChannelInfo() async {
+    if(!Platform.isAndroid) {
+      return null;
+    }
+    return await _channel.invokeMethod('getWalleChannelInfo');
+  }
+  static Future<String> getWalleChannel() async {
+    if(!Platform.isAndroid) {
+      return null;
+    }
+    return await _channel.invokeMethod('getWalleChannel');
+  }
+  
   static Future<bool> checkIsRoot() async {
     if(!Platform.isAndroid) {
-      return Future.error(null);
+      return null;
     }
     return await _channel.invokeMethod('checkIsRoot');
   }
 
   static Future<bool> checkLightSensor() async {
     if(!Platform.isAndroid) {
-      return Future.error(null);
+      return null;
     }
     return await _channel.invokeMethod('checkLightSensor');
   }
 
   static Future<bool> getIndent(String action) async {
     if(!Platform.isAndroid) {
-      return Future.error(null);
+      return null;
     }
     return await _channel.invokeMethod('getIntent', action);
   }
+
+  static Future<bool> getPackageInfo(String action) async {
+    if(!Platform.isAndroid) {
+      return null;
+    }
+    return await _channel.invokeMethod('getPackageInfo', action);
+  }
+
 
   static Future<bool> insideOpenAppStore(String appId) async {
     if(!Platform.isIOS || _isInsideOpenAppStore) {
